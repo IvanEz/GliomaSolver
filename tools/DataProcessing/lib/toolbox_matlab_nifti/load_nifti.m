@@ -65,7 +65,7 @@ if(strcmpi(ext,'.gz'))
   gzipped =  round(rand(1)*10000000 + ...
 		   sum(int16(niftifile))) + round(cputime);
   ind = findstr(niftifile, '.');
-  new_niftifile = sprintf('/tmp/tmp%d.nii', gzipped);
+  new_niftifile = sprintf('%s/tmp%d.nii',tempdir, gzipped);
   %fprintf('Uncompressing %s to %s\n',niftifile,new_niftifile);
   if(strcmp(computer,'MAC') || strcmp(computer,'MACI') || ismac)
     unix(sprintf('gunzip -c %s > %s', niftifile, new_niftifile));
